@@ -35,148 +35,6 @@
 <body>
     <div id="wrapper">
     <header id="header" class="inner"><!-- for more effects see _animate.scss -->
-<<<<<<< HEAD
-=======
-    <div id="content" class="inner">
-        <article class="page" id="install">
-            <h1 class="title">Install</h1>
-            <div class="entry">
-                <p>Type the code below and experience Slash!</p>
-                <pre>$ cd octopress
-$ git clone git://github.com/tommy351/Octopress-Theme-Slash.git .themes/slash
-$ rake install['slash']
-$ rake generate</pre>
-                <p>Have problems when installing with zsh? Try <code>rake install\['slash'\]</code> instead.</p>
-            </div>
-        </article>
-        <article class="page" id="overview">
-            <h1 class="title">Overview</h1>
-            <div class="entry">
-                <p>Slash is a clean one-column theme designed for Octopress, supporting all features in classic theme and built-in <a href="http://fancyapps.com/fancybox/" target="_blank">Fancybox</a>. Want to try a different theme? That's is!</p>
-                <h2>Photos</h2>
-                <p>Slash can read <code>alt</code> property of photos and add it below photos.</p>
-                <p>
-                    <a rel="gallery0" class="fancybox" href="http://i.minus.com/i01yeD3zCWPoV.jpg" title="Wallbase - dgnfly (wallbase.cc/wallpaper/1384450)"><img src="http://i.minus.com/i01yeD3zCWPoV.jpg" alt="Wallbase - dgnfly"></a><span class="caption">Wallbase - dgnfly (wallbase.cc/wallpaper/1384450)</span>
-                </p>
-                <p>Slash comes with built-in <a href="http://fancyapps.com/fancybox/" target="_blank">Fancybox</a>, which enables you to showcase your works easily.</p>
-                <div class="gallery">
-                    <a rel="gallery1" title="Gallery Example #1" href="http://i.minus.com/iJdpkQwzL3ge3.jpg" class="fancybox"><img src="http://i.minus.com/kJdpkQwzL3ge3.jpg"></a><a rel="gallery1" title="Gallery Example #2" href="http://i.minus.com/i9pb58hIp3cLn.jpg" class="fancybox"><img src="http://i.minus.com/k9pb58hIp3cLn.jpg"></a><a rel="gallery1" title="Gallery Example #3" href="http://i.minus.com/iWSMBq2jqOqyD.jpg" class="fancybox"><img src="http://i.minus.com/kWSMBq2jqOqyD.jpg"></a><a rel="gallery1" title="Gallery Example #4" href="http://i.minus.com/iot1QlEFNNEBf.jpg" class="fancybox"><img src="http://i.minus.com/kot1QlEFNNEBf.jpg"></a><a rel="gallery1" title="Gallery Example #5" href="http://i.minus.com/ibwR6YxhPy0kZW.jpg" class="fancybox"><img src="http://i.minus.com/kbwR6YxhPy0kZW.jpg"></a><a rel="gallery1" title="Gallery Example #6" href="http://i.minus.com/iPpbu4c9Ee41N.jpg" class="fancybox"><img src="http://i.minus.com/kPpbu4c9Ee41N.jpg"></a><a rel="gallery1" title="Gallery Example #7" href="http://i.minus.com/irhedREuokky1.jpg" class="fancybox"><img src="http://i.minus.com/krhedREuokky1.jpg"></a><a rel="gallery1" title="Gallery Example #8" href="http://i.minus.com/iLWDgZgfu9HTm.jpg" class="fancybox"><img src="http://i.minus.com/kLWDgZgfu9HTm.jpg"></a>
-                    <small><a href="http://interfacelift.com">InterfaceLIFT</a></small>
-                    <div class="clear"></div>
-                </div>
-                <h2>Videos</h2>
-                <p>Slash can resize HTML5 <code>video</code> and embedded video like <code>iframe</code>, <code>object</code> to page width automatically.</p>
-                <p>
-                    </p><div class="video-container">
-                        <object width="640" height="360"><param name="movie" value="http://www.youtube.com/v/WPbxMIMcWQs?version=3&amp;hl=zh_TW"><param name="allowFullScreen" value="true"><param name="allowscriptaccess" value="always"><embed src="http://www.youtube.com/v/WPbxMIMcWQs?version=3&amp;hl=zh_TW" type="application/x-shockwave-flash" width="640" height="360" allowscriptaccess="always" allowfullscreen="true"></object>
-                    </div>
-                <p></p>
-                <p>Just wrap embedded code with <code>#video-container</code> as below:</p>
-                <pre>&lt;div class="video-container"&gt;
-    // embedded code      
-&lt;/div&gt;</pre>
-            <h2>Layouts</h2>
-            <p>Slash supports responsive layouts. Whatever devices you use, you can get a great experience. You can try to resize your browser now!</p>
-            <p>Code won't trouble Slash. No matter Code Block, <a href="https://gist.github.com/" target="_blank">Gist</a>, <a href="http://jsfiddle.net/" target="_blank">jsFiddle</a>, Slash can display them all well.</p>
-            <figure class="code"><figcaption><span>Add to_fraction for floats (test.rb)</span> <a href="/downloads/code/ruby/test.rb">download</a></figcaption>
- <div class="highlight"><table><tbody><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-</pre></td><td class="code"><pre><code class="rb"><span class="line"><span class="k">class</span> <span class="nc">Float</span>
-</span><span class="line">  <span class="k">def</span> <span class="nf">number_decimal_places</span>
-</span><span class="line">    <span class="nb">self</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">length</span><span class="o">-</span><span class="mi">2</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line">  <span class="k">def</span> <span class="nf">to_fraction</span>
-</span><span class="line">    <span class="n">higher</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="nb">self</span><span class="o">.</span><span class="n">number_decimal_places</span>
-</span><span class="line">    <span class="n">lower</span> <span class="o">=</span> <span class="nb">self</span><span class="o">*</span><span class="n">higher</span>
-</span><span class="line">    <span class="n">gcden</span> <span class="o">=</span> <span class="n">greatest_common_divisor</span><span class="p">(</span><span class="n">higher</span><span class="p">,</span> <span class="n">lower</span><span class="p">)</span>
-</span><span class="line">
-</span><span class="line">    <span class="k">return</span> <span class="p">(</span><span class="n">lower</span><span class="o">/</span><span class="n">gcden</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">,</span> <span class="p">(</span><span class="n">higher</span><span class="o">/</span><span class="n">gcden</span><span class="p">)</span><span class="o">.</span><span class="n">round</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line">
-</span><span class="line"><span class="kp">private</span>
-</span><span class="line">  <span class="k">def</span> <span class="nf">greatest_common_divisor</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-</span><span class="line">     <span class="k">while</span> <span class="n">a</span><span class="o">%</span><span class="n">b</span> <span class="o">!=</span> <span class="mi">0</span>
-</span><span class="line">       <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">round</span><span class="p">,(</span><span class="n">a</span><span class="o">%</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">round</span>
-</span><span class="line">     <span class="k">end</span>
-</span><span class="line">     <span class="k">return</span> <span class="n">b</span>
-</span><span class="line">  <span class="k">end</span>
-</span><span class="line"><span class="k">end</span>
-</span></code></pre></td></tr></tbody></table></div></figure>
-            <div class="gist" id="gist-996818">
-
-        <div class="gist-file">
-          <div class="gist-data gist-syntax">
-              <div class="gist-highlight"><pre><div id="LC1" class="line"><span class="gu">@@ -590,7 +590,7 @@ class SpritesTest &lt; Test::Unit::TestCase</span></div><div id="LC2" class="line">&nbsp;&nbsp;it "should generate a sprite from nested folders" do</div><div id="LC3" class="line">&nbsp;&nbsp;&nbsp;&nbsp;css = render &lt;&lt;-SCSS</div><div id="LC4" class="line"><span class="gd">-     @import "nested/*.png";</span></div><div id="LC5" class="line"><span class="gi">+     @import "nested/**/*.png";</span></div><div id="LC6" class="line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@include all-nested-sprites;</div><div id="LC7" class="line">&nbsp;&nbsp;&nbsp;&nbsp;SCSS</div><div id="LC8" class="line">&nbsp;&nbsp;&nbsp;&nbsp;assert_correct css, &lt;&lt;-CSS</div></pre></div>
-          </div>
-
-          <div class="gist-meta">
-            <a style="float:right;" href="https://gist.github.com/raw/996818/0f02f0b62b33d9f7908354624a6c276dc8820113/test.diff">view raw</a>
-            <a style="float:right;margin-right:10px;color:#666" href="https://gist.github.com/996818#file_test.diff">test.diff</a>
-            <a href="https://gist.github.com/996818">This Gist</a> brought to you by <a href="http://github.com">GitHub</a>.
-          </div>
-        </div>
-</div>
-            <iframe src="http://jsfiddle.net/ccWP7/embedded/js,resources,html,css,result/light/" style="width: 100%; height: 300px"></iframe>
-            </div>
-        </article>
-        <article class="page" id="questions">
-            <h1 class="title">Q&amp;A</h1>
-            <div class="entry">
-                <h3>How to show Facebook link in top right corner?</h3>
-                <p>Add <code>facebook_user</code> parameter to <code>_config.yml</code> and fill it with your Facebook ID.</p>
-                <h3>How to edit menus?</h3>
-                <p>Edit <code>slash</code>→<code>source</code>→<code>_includes</code>→<code>custom</code>→<code>navigation.html</code>.</p>
-                <h3>How to hide Twitter stream in banner?</h3>
-                <p>Delete <code>slash</code>→<code>source</code>→<code>_layouts</code>→<code>default.html</code> line 6.</p>
-                <h3>How to disable Fancybox?</h3>
-                <ol>
-                    <li>Delete <code>slash</code>→<code>source</code>→<code>_includes</code>→<code>after_footer.html</code> line 4.</li>
-                    <li>Delete <code>slash</code>→<code>source</code>→<code>javascripts</code>→<code>caption.js</code> line 14.</li>
-                </ol>
-                <p>If you have any problems or advices, feel free to comment <a href="http://zespia.tw/blog/2012/01/25/slash-theme/">here</a>.</p>
-            </div>
-        </article>
-        <div class="share">
-<div class="fb-like fb_edge_widget_with_comment fb_iframe_widget" data-href="http://zespia.tw/Octopress-Theme-Slash/" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false" fb-xfbml-state="rendered"><span style="height: 20px; width: 66px;"><iframe id="f257e21ba" name="f2d6b8143" scrolling="no" style="border: none; overflow: hidden; height: 20px; width: 66px;" title="Like this content on Facebook." class="fb_ltr" src="http://www.facebook.com/plugins/like.php?api_key=145365378826124&amp;locale=zh_TW&amp;sdk=joey&amp;channel_url=http%3A%2F%2Fstatic.ak.facebook.com%2Fconnect%2Fxd_arbiter.php%3Fversion%3D24%23cb%3Df2810d868c%26origin%3Dhttp%253A%252F%252Fzespia.tw%252Ff2a2e8100c%26domain%3Dzespia.tw%26relation%3Dparent.parent&amp;href=http%3A%2F%2Fzespia.tw%2FOctopress-Theme-Slash%2F&amp;node_type=link&amp;width=100&amp;layout=button_count&amp;colorscheme=light&amp;show_faces=false&amp;send=false&amp;extended_social_context=false"></iframe></span></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/zh_TW/all.js#xfbml=1&appId=145365378826124";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-<iframe allowtransparency="true" frameborder="0" scrolling="no" src="http://platform.twitter.com/widgets/tweet_button.1366232305.html#_=1367087133736&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http%3A%2F%2Fzespia.tw%2FOctopress-Theme-Slash%2F&amp;size=m&amp;text=Slash%20%E2%80%94%20a%20minimal%20theme%20for%20Octopress&amp;url=http%3A%2F%2Fzespia.tw%2FOctopress-Theme-Slash%2F&amp;via=tommy351" class="twitter-share-button twitter-count-horizontal" style="width: 107px; height: 20px;" title="Twitter Tweet Button" data-twttr-rendered="true"></iframe>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div style="text-indent: 0px; margin: 0px; padding: 0px; background-color: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 90px; height: 20px; background-position: initial initial; background-repeat: initial initial;" id="___plusone_0"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 90px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" width="100%" id="I0_1367087133850" name="I0_1367087133850" src="https://plusone.google.com/_/+1/fastbutton?bsv&amp;size=medium&amp;hl=en-US&amp;origin=http%3A%2F%2Fzespia.tw&amp;url=http%3A%2F%2Fzespia.tw%2FOctopress-Theme-Slash%2F&amp;ic=1&amp;jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.zh_CN.LdQGG7ZbhmU.O%2Fm%3D__features__%2Fam%3DUQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAItRSTN_y63vJ73fCfzPZsoiOmXvjFzyIg#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Conload&amp;id=I0_1367087133850&amp;parent=http%3A%2F%2Fzespia.tw&amp;rpctoken=16385680" allowtransparency="true" data-gapiattached="true" title="+1"></iframe></div>
-<script type="text/javascript">
-  (function() {
-    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-    po.src = 'https://apis.google.com/js/plusone.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-  })();
-</script>
-<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_http" frameborder="0" allowtransparency="true" scrolling="no" id="fb_xdm_frame_http" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tab-index="-1" style="border: none;" src="http://static.ak.facebook.com/connect/xd_arbiter.php?version=24#channel=f2a2e8100c&amp;origin=http%3A%2F%2Fzespia.tw&amp;channel_path=%2FOctopress-Theme-Slash%2F%3Ffb_xd_fragment%23xd_sig%3Dff01554d4%26"></iframe><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tab-index="-1" style="border: none;" src="https://s-static.ak.facebook.com/connect/xd_arbiter.php?version=24#channel=f2a2e8100c&amp;origin=http%3A%2F%2Fzespia.tw&amp;channel_path=%2FOctopress-Theme-Slash%2F%3Ffb_xd_fragment%23xd_sig%3Dff01554d4%26"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="f10926f7" frameborder="0" allowtransparency="true" scrolling="no" style="display: none;" src="https://www.facebook.com/dialog/oauth?client_id=145365378826124&amp;response_type=token%2Csigned_request%2Ccode&amp;display=none&amp;domain=zespia.tw&amp;origin=1&amp;redirect_uri=http%3A%2F%2Fstatic.ak.facebook.com%2Fconnect%2Fxd_arbiter.php%3Fversion%3D24%23cb%3Df23e3a6eac%26origin%3Dhttp%253A%252F%252Fzespia.tw%252Ff2a2e8100c%26domain%3Dzespia.tw%26relation%3Dparent&amp;sdk=joey"></iframe></div></div></div>
-        </div>
-    </div>
->>>>>>> test
 <h1 class="animated bounceInDown">
     <div id="headerbg">
         ccWulang
@@ -223,6 +81,48 @@ $ rake generate</pre>
         <article class="post">
 	<h2 class="title">MySecondBlog</h2>
 	<div class="entry-content">
+        <figure class="code"><figcaption><span>Add to_fraction for floats (test.rb)</span> <a href="/downloads/code/ruby/test.rb">download</a></figcaption>
+ <div class="highlight"><table><tbody><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+</pre></td><td class="code"><pre><code class="rb"><span class="line"><span class="k">class</span> <span class="nc">Float</span>
+</span><span class="line">  <span class="k">def</span> <span class="nf">number_decimal_places</span>
+</span><span class="line">    <span class="nb">self</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">length</span><span class="o">-</span><span class="mi">2</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line">  <span class="k">def</span> <span class="nf">to_fraction</span>
+</span><span class="line">    <span class="n">higher</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="nb">self</span><span class="o">.</span><span class="n">number_decimal_places</span>
+</span><span class="line">    <span class="n">lower</span> <span class="o">=</span> <span class="nb">self</span><span class="o">*</span><span class="n">higher</span>
+</span><span class="line">    <span class="n">gcden</span> <span class="o">=</span> <span class="n">greatest_common_divisor</span><span class="p">(</span><span class="n">higher</span><span class="p">,</span> <span class="n">lower</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">return</span> <span class="p">(</span><span class="n">lower</span><span class="o">/</span><span class="n">gcden</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">,</span> <span class="p">(</span><span class="n">higher</span><span class="o">/</span><span class="n">gcden</span><span class="p">)</span><span class="o">.</span><span class="n">round</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="kp">private</span>
+</span><span class="line">  <span class="k">def</span> <span class="nf">greatest_common_divisor</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</span><span class="line">     <span class="k">while</span> <span class="n">a</span><span class="o">%</span><span class="n">b</span> <span class="o">!=</span> <span class="mi">0</span>
+</span><span class="line">       <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">round</span><span class="p">,(</span><span class="n">a</span><span class="o">%</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">round</span>
+</span><span class="line">     <span class="k">end</span>
+</span><span class="line">     <span class="k">return</span> <span class="n">b</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></tbody></table></div></figure>
 </div>
 
 <div class="meta">
