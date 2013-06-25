@@ -120,7 +120,8 @@
 };
 </pre></td></tr></table></figure>
 
-<p>其中rules当中，是用来订制规则的，大家根据需求进行改写。<br>在Gruntfile.js中的grunt.init函数下找到<figure class="highlight lang-connect.livereload.options.middleware```，增加代码，修改后为:"><table><tr><td class="gutter"><pre>1
+<p>其中rules当中，是用来订制规则的，大家根据需求进行改写。<br>在Gruntfile.js中的grunt.init函数下找到 connect.livereload.options.middleware，增加代码，修改后为:  </p>
+<p><figure class="highlight lang-js"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -132,22 +133,21 @@
 10
 11
 12
-13
-</pre></td><td class="code"><pre>``` <span class="tag">js</span>  
-<span class="tag">livereload</span>: <span class="rules">{
-	<span class="rule"><span class="attribute">options</span>:<span class="value"> {
-		middleware: function (connect) {
-			return [
-				<span class="function">rwGateway(<span class="string">'app'</span>)</span>,
+</pre></td><td class="code"><pre>livereload: {
+	options: {
+		middleware: <span class="function"><span class="keyword">function</span> <span class="params">(connect)</span> {</span>
+			<span class="keyword">return</span> [
+				rwGateway(<span class="string">'app'</span>),
 				lrSnippet,
-				<span class="function">mountFolder(connect, <span class="string">'.tmp'</span>)</span>,
-				<span class="function">mountFolder(connect, yeomanConfig.app)</span>
-			];</span></span>
-		<span class="rule">}</span></span>
+				mountFolder(connect, <span class="string">'.tmp'</span>),
+				mountFolder(connect, yeomanConfig.app)
+			];
+		}
 	}
 }
 </pre></td></tr></table></figure>
-找到<figure class="highlight lang-watch.livereload.files```，增加代码，修改后为:"><table><tr><td class="gutter"><pre>1
+找到 watch.livereload.files，增加代码，修改后为:  </p>
+<p><figure class="highlight lang-js"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -159,18 +159,16 @@
 10
 11
 12
-13
-</pre></td><td class="code"><pre>``` js  
-livereload: {
+</pre></td><td class="code"><pre>livereload: {
 	options: {
 		livereload: LIVERELOAD_PORT
 	},
 	files: [
-		'<span class="vbscript">&lt;%= yeoman.app %&gt;</span>/*.html',
-		'<span class="vbscript">&lt;%= yeoman.app %&gt;</span>/{,*/}*.php',
-		'{.tmp,<span class="vbscript">&lt;%= yeoman.app %&gt;</span>}/styles/{,*/}*.css',
-		'{.tmp,<span class="vbscript">&lt;%= yeoman.app %&gt;</span>}/scripts/{,*/}*.js',
-		'<span class="vbscript">&lt;%= yeoman.app %&gt;</span>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+		<span class="string">'&lt;%= yeoman.app %&gt;/*.html'</span>,
+		<span class="string">'&lt;%= yeoman.app %&gt;/{,*/}*.php'</span>,
+		<span class="string">'{.tmp,&lt;%= yeoman.app %&gt;}/styles/{,*/}*.css'</span>,
+		<span class="string">'{.tmp,&lt;%= yeoman.app %&gt;}/scripts/{,*/}*.js'</span>,
+		<span class="string">'&lt;%= yeoman.app %&gt;/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'</span>
 	]
 }
 </pre></td></tr></table></figure>
