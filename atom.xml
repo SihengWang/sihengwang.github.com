@@ -3,12 +3,29 @@
   <title><![CDATA[Code == Article]]></title>
   <link href="http://sihengwang.github.io/atom.xml" rel="self"/>
   <link href="http://sihengwang.github.io"/>
-  <updated>2013-07-20T18:15:14.436Z</updated>
+  <updated>2013-07-25T17:57:35.422Z</updated>
   <id>http://sihengwang.github.io/</id>
   <author>
     <name><![CDATA[ccWulang]]></name>
   </author>
   <generator uri="http://zespia.tw/hexo">Hexo</generator>
+  <entry>
+    <title type="html"><![CDATA[HTTP几个基本操作的简单介绍]]></title>
+    <link href="http://sihengwang.github.io/2013/07/26/http-basic-operation/"/>
+    <id>http://sihengwang.github.io/2013/07/26/http-basic-operation/</id>
+    <published>2013-07-25T17:27:04.000Z</published>
+    <updated>2013-07-25T17:57:29.000Z</updated>
+    <content type="html"><![CDATA[<p>超文本传输协议（HTTP）定义了几个基本操作<code>GET 、POST 、PUT 、PATCH 、DELETE</code>。<br>这几个基本操作表现了客户端（如浏览器）与服务器（如Web服务器）之间的操作。<br><a name="more"></a>  </p>
+<h4>GET</h4>
+<p>GET 是最基本的HTTP操作，主要功能是用来向服务器发出请求，读取需要的数据，如读取一个网页或者读取一个表单数据等。当在浏览器上输入网址进行访问时，浏览器通常发出的就是GET请求。  </p>
+<h4>POST</h4>
+<p>POST 是另外一种最基本的操作，当我们提交一个表单的数据时，浏览器通常发送的就是POST请求。此外，POST也会用在创建和更新某些东西的操作上。比如：更改密码或者添加一个新状态等。  </p>
+<h4>PUT 和 PATCH</h4>
+<p>PUT 可以用在新增操作上，比较正确的定义是：Replace ( Create or Update )，当我们向服务器提交一个PUT请求时，如果服务器上已经存在要提交的东西时，服务器会进行替换，如果没有则新增。但是PUT需要包含完整的数据。<br>PATCH 操作相对比较新，与PUT的作用一样，也是用在新增操作上。Github API 和 Rails 4 都已经开始采用了。与PUT操作不同的是，PATCH操作不需要提交完整的数据，可以提交部分数据进行更新。  </p>
+<h4>DELETE</h4>
+<p>DELETE 用来销毁服务器上的某个东西。<br>DELETE操作和PATCH操作通常比其他操作使用少一些，因为浏览器没有内建对这两种请求的支持，不过现在很多Web框架已经可以很好的进行处理了。<br>未完待续...</p>
+]]></content>
+  </entry>
   <entry>
     <title type="html"><![CDATA[Yeoman进阶-在Yeoman中使用PHP]]></title>
     <link href="http://sihengwang.github.io/2013/06/26/yeoman-with-php/"/>
