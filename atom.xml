@@ -3,7 +3,7 @@
   <title><![CDATA[Code == Article]]></title>
   <link href="http://sihengwang.github.io/atom.xml" rel="self"/>
   <link href="http://sihengwang.github.io"/>
-  <updated>2013-08-06T17:04:44.137Z</updated>
+  <updated>2013-08-06T17:09:13.543Z</updated>
   <id>http://sihengwang.github.io/</id>
   <author>
     <name><![CDATA[ccWulang]]></name>
@@ -14,7 +14,7 @@
     <link href="http://sihengwang.github.io/2013/08/06/postaljs-intro/"/>
     <id>http://sihengwang.github.io/2013/08/06/postaljs-intro/</id>
     <published>2013-08-06T15:18:09.000Z</published>
-    <updated>2013-08-06T17:04:39.000Z</updated>
+    <updated>2013-08-06T17:09:05.000Z</updated>
     <content type="html"><![CDATA[<h2>Postal.js 是什么?</h2>
 <p>Postal.js是一个内存中的消息总线。它可以运行在浏览器中，或者使用在Node.js的服务端。  </p>
 <h2>为什么要使用它?</h2>
@@ -22,7 +22,8 @@
 <ul>
 <li>当你需要两个视图模形进行通讯时，通常我们并不希望两个视图之间了解对方的需要。它们只需要订阅自己所感兴趣的消息主题。当需要让它们对自己所关心的消息做出相应的反应时，只需要将消息发布到消息总线上。所订阅过消息的视图就会收到通知。  </li>
 </ul>
-<p>通过上面的例子我们可以出，其实Postal.js就是一个典型的发布/订阅模型。它并不会直接引用触发事件的主体，而是将消息发布到消息总线上，如果有其他模块订阅了相应的消息并指向一个事件，这个事件将被触发。  </p>
+<p>通过上面的例子我们可以出，其实Postal.js就是一个典型的发布/订阅模型。它并不会直接引用触发事件的主体，而是将消息发布到消息总线上，如果有其他模块订阅了相应的消息并指向一个事件，这个事件将被触发。 
+<a name="more"></a>  </p>
 <h2>Postal.js 简单使用</h2>
 <figure class="highlight lang-js"><table><tr><td class="gutter"><pre>1
 2

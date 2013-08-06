@@ -71,132 +71,16 @@
 <ul>
 <li>当你需要两个视图模形进行通讯时，通常我们并不希望两个视图之间了解对方的需要。它们只需要订阅自己所感兴趣的消息主题。当需要让它们对自己所关心的消息做出相应的反应时，只需要将消息发布到消息总线上。所订阅过消息的视图就会收到通知。  </li>
 </ul>
-<p>通过上面的例子我们可以出，其实Postal.js就是一个典型的发布/订阅模型。它并不会直接引用触发事件的主体，而是将消息发布到消息总线上，如果有其他模块订阅了相应的消息并指向一个事件，这个事件将被触发。  </p>
-<h2>Postal.js 简单使用</h2>
-<figure class="highlight lang-js"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-</pre></td><td class="code"><pre><span class="comment">// 简单起见可以使用默认的postal channel</span>
-<span class="keyword">var</span> channel = postal.channel();
-
-<span class="comment">// 订阅一个名为 name.change 的消息  </span>
-<span class="keyword">var</span> subscription = channel.subscribe(<span class="string">"name.change"</span>, <span class="keyword">function</span>(data) {
-  $(<span class="string">"#personName"</span>).html(<span class="string">"Name: "</span> + data.name);
-});  
-
-<span class="comment">// 其他模块发布 name.change 消息</span>
-channel.publish(<span class="string">"name.change"</span>, { name: <span class="string">"Mr.Postal"</span> });  
-
-<span class="comment">// 取消订阅  </span>
-subscription.unsubscribe();  
-
-<span class="comment">// postal还提供了更高级的使用方法，可以使得消息挂载到非默认的postal channel上  </span>
-<span class="keyword">var</span> anotherSubScription = postal.subscribe({
-  channel  : <span class="string">"MyChannel"</span>,
-  topic    : <span class="string">"name.change"</span>,
-  callback : <span class="keyword">function</span>(data, envelope) {
-    $(<span class="string">"#personName"</span>).html(<span class="string">"Name: "</span> + data.name);
-  }
-});
-
-postal.publish({
-  channel  : <span class="string">"MyChannel"</span>,
-  topic    : <span class="string">"name.change"</span>,
-  data     : {
-    name: <span class="string">"Mr.Postal"</span>
-  }
-});
-</pre></td></tr></table></figure>
-
-<h2>* 和 # 通配符的意义</h2>
-<p>* 号表示一个单词的一次，例如当订阅了 *.change 后，它会与 name.change 和 location.change 等类似&quot;一个单词.change&quot;的消息绑定，当与之形式一致的消息被发布时，它都会被触发。  </p>
-<figure class="highlight lang-js"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-</pre></td><td class="code"><pre><span class="comment">// * 号的使用</span>
-<span class="keyword">var</span> subscription = channel.subscribe(<span class="string">"*.changed"</span>, <span class="keyword">function</span>(data) {
-  $(<span class="string">"&lt;li&gt;"</span> + data.type + <span class="string">" changed: "</span> + data.value + <span class="string">"&lt;/li&gt;"</span>).appendTo(<span class="string">"ul"</span>);
-});
-channel.publish(<span class="string">"name.changed"</span>, {type: <span class="string">"Name"</span>, value: <span class="string">"Mr.Postal"</span>}); <span class="comment">// 事件会被触发</span>
-channel.publish(<span class="string">"location.changed"</span>, {type: <span class="string">"Location"</span>, value: <span class="string">"China"</span>}); <span class="comment">// 事件会被触发</span>
-channel.publish(<span class="string">"name.show"</span>, {type: <span class="string">"Name"</span>, value: <span class="string">"Mr.Postal"</span>}); <span class="comment">// 事件不会被触发</span>
-</pre></td></tr></table></figure>
-
-<p># 号表示0-n个字符/单词，例如当订阅了 Jhon.#.changed，它会与 Jhon.name.changed 和 Jhon.body.weight.changed 等类似的 &quot;Jhon.一个或多个字符/单词.changed&quot;的消息绑定，当与之形式一致的消息被发布时，它都会触发。  </p>
-<figure class="highlight lang-js"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-</pre></td><td class="code"><pre><span class="comment">// # 号的使用</span>
-<span class="keyword">var</span> subscription = channel.subscribe(<span class="string">"Jhon.#.changed"</span>, <span class="keyword">function</span>(data) {
-  $(<span class="string">"&lt;li&gt;"</span> + data.type + <span class="string">" Changed: "</span> + data.value + <span class="string">"&lt;/li&gt;"</span>).appendTo(<span class="string">"ul"</span>);
-});
-channel.publish(<span class="string">"Jhon.name.changed"</span>, {type: <span class="string">"Name"</span>, value: <span class="string">"Smith"</span>}); <span class="comment">// 事件会被触发</span>
-channel.publish(<span class="string">"Jhon.body.weight.changed"</span>, {type: <span class="string">"Body.Weight"</span>, value: <span class="string">"80kg"</span>}); <span class="comment">//事件会被触发</span>
-channel.publish(<span class="string">"Oliver.name.changed"</span>, {type: <span class="string">"Name"</span>, value: <span class="string">"Joe"</span>}); <span class="comment">// 事件不会被触发</span>
-channel.publish(<span class="string">"changed"</span>, {type: <span class="string">"Body.Weight"</span>, value: <span class="string">"100kg"</span>}); <span class="comment">// 事件不会被触发</span>
-</pre></td></tr></table></figure>
-
-
-<h2>channel是什么?</h2>
-<p>channel是Postal.js中的关键，它主要负责消息的发送和接收。channel这个描述还是比较形象的，它就像一个专用的公路，通过它可以实现订阅者与发布者之间的通信。当我们给channel提供一个特定的名字，发布者可以根据名称将数据发送到这条channel上，订阅者可以监听这个特定名称的通道，也可以监听所有的通道，如果有数据，订阅者所订阅的响应事件就会被触发。  </p>
-<figure class="highlight lang-js"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-</pre></td><td class="code"><pre><span class="keyword">var</span> customChannel = postal.channel(<span class="string">"custom"</span>);
-<span class="keyword">var</span> subscription = customChannel.subscribe(<span class="string">"name.changed"</span>, <span class="keyword">function</span>(data) {
-  $(<span class="string">"&lt;li&gt;"</span> + data.type + <span class="string">" changed: "</span> + data.value + <span class="string">"&lt;/li&gt;"</span>).appendTo(<span class="string">"ul"</span>);
-});  
-customChannel.publish(<span class="string">"name.changed"</span>, {type: <span class="string">"Name"</span>, value: <span class="string">"Mr.Postal"</span>});
-</pre></td></tr></table></figure>
-
-<p>使用Postal.js是一个比较好的方式帮助我们将事件传递解耦，当是需要注意的是，切不可滥用。控制好使用的粒度非常重要。一个常用的原则是：</p>
-<blockquote>
-<p>在组件内部使用观察者模式（以后的文章会做介绍）。在组件之间使用发布/订阅者模式，此时Posta.js就可以派上大用场了。  </p>
-</blockquote>
-<p>关于Postal.js的更多使用请参考<a href="https://github.com/postaljs/postal.js">Postal.js</a>项目主页。</p>
+<p>通过上面的例子我们可以出，其实Postal.js就是一个典型的发布/订阅模型。它并不会直接引用触发事件的主体，而是将消息发布到消息总线上，如果有其他模块订阅了相应的消息并指向一个事件，这个事件将被触发。 
 
       
     </div>
     <footer>
       
+        
+          <div class="alignleft">
+            <a href="/2013/08/06/postaljs-intro/#more" class="more-link">Read More</a>
+          </div>
         
         
       
@@ -245,6 +129,213 @@ customChannel.publish(<span class="string">"name.changed"</span>, {type: <span c
   <article class="post">
   
   <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-06-25T18:11:43.000Z"><a href="/2013/06/26/yeoman-with-php/">6月 26 2013</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2013/06/26/yeoman-with-php/">Yeoman进阶-在Yeoman中使用PHP</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>上篇文章中，向大家介绍了Yeoman的基本使用。我在做一些个人项目中发现，在做PHP项目开发中，配合Yeoman一起使用，使得开发工作更有意思，配合live reloding，可以让我们在开发中更加有效率。<br>整合PHP与Yeoman，参考其他开发者的<a href="https://coderwall.com/p/bal2_a">文章</a>后，发现需要使用一个叫做gateway的中间件，但是由于我自己在使用过程中，尝试很多次，都未能很好的实现url重定向。因此又跑到<em><a href="https://npmjs.org">npm</a></em>上转了一圈发现另外一个中间件<a href="https://npmjs.org/package/gateway-rewrite">gateway-rewrite</a>，其功能与gateway类似，但在使用中能够成功实现url重定向。  </p>
+<p><img src="/images/yeoman-logo.png" alt="Yeoman-logo"> <img src="/images/php-logo.gif" alt="PHP-logo"></p>
+<p>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2013/06/26/yeoman-with-php/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-06-16T14:29:21.000Z"><a href="/2013/06/16/yeoman-started/">6月 16 2013</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2013/06/16/yeoman-started/">Yeomen介绍和环境搭建</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2>Yeoman是什么东东？</h2>
+<p>如果你已经厌倦了每一个新的项目开始时，在规划好前端所需要的各种各样的生产环境（如基于php或Node.js）、编译环境（如支持coffeescript/sass/less等的环境）、框架（如bootstrap/foundation/Yui）、类库、测试环境搭建以及打包部署等，然后在本地一个一个将上述所需的各种东东或是加入到你的工程当中或是在本地搭建好环境。想象一下，这是多么庞大的一个工作啊，它会无情的消耗掉我们宝贵的开发时间。而Yeoman就是为我们解决这些烦心事的，它让我们能够通过几条命令，花费很短的时间就能够快速准备好这一切。我们就可以全心全意的投入在Coding的美妙世界当中。</p>
+<p>那么到底什么是Yeoman呢？其实Yeoman是三个工具的组合。它不单单是一个工具，它是一个工作流程，是使得Web开发当中各个环节和部件更加协调运作的一种最佳实践。从而提高我们的生产力和满意度。</p>
+<p><img src="/images/toolset.png" alt="Yeoman工具集"></p>
+
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2013/06/16/yeoman-started/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-06-12T16:49:12.000Z"><a href="/2013/06/13/hello-world/">6月 13 2013</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2013/06/13/hello-world/">Hello World</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>Welcome to <a href="http://zespia.tw/hexo">Hexo</a>! This is your very first post. Check <a href="http://zespia.tw/hexo/docs">documentation</a> to learn how to use.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-05-02T15:40:00.000Z"><a href="/2013/05/02/firstBlog/">5月 2 2013</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2013/05/02/firstBlog/">Markdown博客</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>第一篇MarkDown博客，使用学习MarkDown基本语法。   </p>
+<p>@插入两个以上的空格然后回车，即表示 &lt; /br&gt;   </p>
+<p>这是一个普通段落:</p>
+<pre><code><figure class="highlight"><pre>这是一个代码区块
+Here <span class="keyword">is</span> an example <span class="keyword">of</span> <span class="constant">AppleScript</span>:
+
+    <span class="keyword">tell</span> <span class="type">application</span> <span class="string">"Foo"</span>
+        <span class="command">beep</span>
+    <span class="keyword">end</span> <span class="keyword">tell</span>
+</pre></figure></code></pre>
+<div class="footer">
+    &copy; 2013 ccWulang Corporation
+</div>   
+
+
+
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2013/05/02/firstBlog/#more" class="more-link">Read More</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+<nav id="pagination">
+  
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:sihengwang.github.io">
+  </form>
+</div>
+
+  
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/PHP/" style="font-size: 10.00px;">PHP</a><a href="/tags/前端工具/" style="font-size: 15.00px;">前端工具</a>
+  </div>
+</div>
+
+
+  
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2013 ccWulang
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>>
     <header>
       
         <div class="icon"></div>
