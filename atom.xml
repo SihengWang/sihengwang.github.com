@@ -3,12 +3,100 @@
   <title><![CDATA[Code == Article]]></title>
   <link href="http://sihengwang.github.io/atom.xml" rel="self"/>
   <link href="http://sihengwang.github.io"/>
-  <updated>2013-08-06T17:14:40.545Z</updated>
+  <updated>2013-09-01T15:46:27.837Z</updated>
   <id>http://sihengwang.github.io/</id>
   <author>
     <name><![CDATA[ccWulang]]></name>
   </author>
   <generator uri="http://zespia.tw/hexo">Hexo</generator>
+  <entry>
+    <title type="html"><![CDATA[浏览器事件流]]></title>
+    <link href="http://sihengwang.github.io/2013/09/01/event-flow/"/>
+    <id>http://sihengwang.github.io/2013/09/01/event-flow/</id>
+    <published>2013-09-01T14:27:53.000Z</published>
+    <updated>2013-09-01T15:46:24.000Z</updated>
+    <content type="html"><![CDATA[<h2>什么是事件流？</h2>
+<blockquote>
+<p>事件流 - 描述的是从页面接收事件的顺序  </p>
+</blockquote>
+<h2>为什么要了解事件流？</h2>
+<p>浏览器发展到第四代的时候，浏览器开发团队遇到了一个很有意思的问题：页面哪一部分会拥有某个特定的事件？<br>要明白这个问题问的是什么，可以想象在一张纸上的一组同心圆。如果你把手指放在圆心上，那么你的手指指向的不是一个圆，而是纸上的所有圆。根据理解，通常都被认为，当你单击了某个按钮，他们都认为单击事件不仅仅发生在按钮上。换句话说，在单击按钮的同时，你也单击了按钮的容器元素，甚至也单击了整个页面。 
+<a name="more"></a> </p>
+<h2>事件流有哪些？</h2>
+<ul>
+<li>冒泡型事件流  </li>
+<li>捕获型事件流</li>
+<li>DOM型事件流  </li>
+</ul>
+<p>示例代码：  </p>
+<figure class="highlight lang-html"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="code"><pre>
+<span class="doctype">&lt;!DOCTYPE html&gt;</span>  
+<span class="tag">&lt;<span class="title">html</span>&gt;</span>  
+  <span class="tag">&lt;<span class="title">head</span>&gt;</span>  
+  <span class="tag">&lt;/<span class="title">head</span>&gt;</span>  
+    <span class="tag">&lt;<span class="title">title</span>&gt;</span>Event Flow Example<span class="tag">&lt;/<span class="title">title</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">body</span>&gt;</span>  
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"myDiv"</span>&gt;</span>Click Me<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">body</span>&gt;</span>  
+<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
+</pre></td></tr></table></figure>
+
+<p>如果单击了页面中的div元素，那么这个click事件的传播顺序会根据不同的事件流类型有所不同，如具体如下：    </p>
+<h2>冒泡型事件</h2>
+<blockquote>
+<p>冒泡型事件 - 即事件开始时由最具体的元素接收（文档中嵌套层次最深的那个节点）接收，然后逐级向上传播到较为不具体的节点  </p>
+</blockquote>
+<p>事件冒泡流程图总体流程如下图，但是不同浏览器冒泡的最上级有所区别IE5.5及更早版本中的事件冒泡会跳过<html>元素（从<body>直接跳到document）。IE9、Firefox、Chrome和Safari则将事件一直冒泡到window对象。  </p>
+<p><img src="/images/event-flow/bubbling.png" alt="事件冒泡流程">  </p>
+<p>click事件首先在<div>元素上发生，而这个元素就是我们单击的元素。然后click事件沿着DOM树向上传播，在每一级节点上都会发生，知道传播到顶层对象。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre><span class="comment">IE</span> <span class="comment">5</span>.<span class="comment">5</span>  <span class="comment">div</span> <span class="literal">-</span>&gt; <span class="comment">body</span> <span class="literal">-</span>&gt; <span class="comment">document</span>  
+<span class="comment">IE</span> <span class="comment">6</span>.<span class="comment">0</span>  <span class="comment">div</span> <span class="literal">-</span>&gt; <span class="comment">body</span> <span class="literal">-</span>&gt; <span class="comment">html</span> <span class="literal">-</span>&gt; <span class="comment">document</span>  
+<span class="comment">Mozilla1</span>.<span class="comment">0及更高版本</span>  <span class="comment">div</span> <span class="literal">-</span>&gt; <span class="comment">body</span> <span class="literal">-</span>&gt; <span class="comment">html</span> <span class="literal">-</span>&gt; <span class="comment">document</span> <span class="literal">-</span>&gt; <span class="comment">window
+</pre></td></tr></table></figure>
+
+<h2>捕获型事件</h2>
+<blockquote>
+<p>捕获型事件 - 是从不太具体的节点应该更早接收到事件，而最具体的节点应该最后接收到事件。事件捕获的用意在于在事件达到预定目标之前捕获它  </p>
+</blockquote>
+<p>事件捕获流程图如下：  </p>
+<p><img src="/images/event-flow/capturing.png" alt="事件捕获流程">  </p>
+<p>事件捕获过程中，DOM顶层对象首先接收到click事件，然后事件沿着DOM树依次向下，一直传播到事件的实际目标，即<div>元素。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="comment">Netscape</span> <span class="comment">document</span> <span class="literal">-</span>&gt; <span class="comment">html</span> <span class="literal">-</span>&gt; <span class="comment">body</span> <span class="literal">-</span>&gt; <span class="comment">div
+</pre></td></tr></table></figure>
+
+
+<p>虽然事件捕获是Netscape唯一支持的事件流模型，但IE9、Safari、Chrome、Opera和Firefox目前也都支持这种事件流模型。尽管“DOM2级事件”规范要求应该从document对象开始传播，但与Netscape不同的是，其他的浏览器都是从window对象开始捕获事件。  </p>
+<h2>DOM型事件</h2>
+<blockquote>
+<p>DOM2级事件规定的事件流包括三个阶段：事件捕获阶段、处于目标阶段和事件冒泡阶段。首先发生的是事件捕获，为了截获事件提供了机会。然后是实际的目标接收到事件。最后一个阶段是冒泡阶段，可以在这个阶段对事件做出响应  </p>
+</blockquote>
+<p>DOM型事件流程图如下：  </p>
+<p><img src="/images/event-flow/dom.png" alt="DOM型流程">  </p>
+<p>在DOM事件流中，实际的目标（div元素）在捕获阶段不会接收到事件。这意味着在捕获阶段，事件从顶层对象到html再到body后就停止了。下一个阶段是“处于目标”阶段，于是事件在div上发生，并在事件处理中被看成冒泡阶段（或捕获阶段）的一部分。然后冒泡阶段发生，事件又传播回DOM顶层对象。  </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="comment">document</span> <span class="literal">-</span>&gt; <span class="comment">html</span> <span class="literal">-</span>&gt; <span class="comment">body</span> <span class="literal">-</span>&gt; <span class="comment">div</span> <span class="literal">-</span>&gt; <span class="comment">body</span> <span class="literal">-</span>&gt; <span class="comment">html</span> <span class="literal">-</span>&gt; <span class="comment">document
+</pre></td></tr></table></figure>
+
+<p>多数支持DOM事件流的浏览器都实现了一种特定的行为；即使“DOM2级事件”规范明确要求捕获阶段不会涉及事件目标，但IE9、Safari、Chrome、Firefox和Opera 9.5及更高版本都会在捕获阶段触发事件对象上的事件。结果就是有两个目标对象上面操作事件。  </p>
+<blockquote>
+<p>IE9、Opera、Firefox、Chrome和Safari都支持DOM事件流；IE8及更早版本不支持DOM事件流</p>
+</blockquote>
+]]></content>
+  </entry>
   <entry>
     <title type="html"><![CDATA[Postal.js介绍]]></title>
     <link href="http://sihengwang.github.io/2013/08/06/postaljs-intro/"/>
