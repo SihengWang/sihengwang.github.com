@@ -1,9 +1,5 @@
 {
   "assetsByChunkName": {
-    "path---my-second-post": [
-      "path---my-second-post-62611164d7d19be00a9f.js",
-      "path---my-second-post-62611164d7d19be00a9f.js.map"
-    ],
     "component---src-pages-index-js": [
       "component---src-pages-index-js-378b5cd6d70e8d0eb692.js",
       "component---src-pages-index-js-378b5cd6d70e8d0eb692.js.map"
@@ -28,17 +24,9 @@
       "component---src-layouts-index-js-f6cdfa3df9d137ce1d32.js",
       "component---src-layouts-index-js-f6cdfa3df9d137ce1d32.js.map"
     ],
-    "path---hi-folks": [
-      "path---hi-folks-fb8a9a0538f33ddbacd1.js",
-      "path---hi-folks-fb8a9a0538f33ddbacd1.js.map"
-    ],
     "path---index": [
-      "path---index-b4370dcb0f13b5bf5856.js",
-      "path---index-b4370dcb0f13b5bf5856.js.map"
-    ],
-    "path---hello-world": [
-      "path---hello-world-399b384f92918a6ce430.js",
-      "path---hello-world-399b384f92918a6ce430.js.map"
+      "path---index-0db164276ef18f229c34.js",
+      "path---index-0db164276ef18f229c34.js.map"
     ],
     "commons": [
       "commons-b4e979d6fcb38826292f.js",
@@ -51,10 +39,18 @@
       "path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js.map"
     ],
     "app": [
-      "app-a8b381282a450effb0b2.js",
+      "app-f066c2c776a79b2617eb.js",
       "build-js-styles.css",
-      "app-a8b381282a450effb0b2.js.map",
+      "app-f066c2c776a79b2617eb.js.map",
       "build-js-styles.css.map"
+    ],
+    "path---markdown-example": [
+      "path---markdown-example-68da94e1edf3bfa92ac1.js",
+      "path---markdown-example-68da94e1edf3bfa92ac1.js.map"
+    ],
+    "path---git-special-skill": [
+      "path---git-special-skill-94d7355857e4b83f06a7.js",
+      "path---git-special-skill-94d7355857e4b83f06a7.js.map"
     ],
     "component---src-pages-profile-index-jsx": [
       "component---src-pages-profile-index-jsx-db42792e767d4f97a3ec.js",
