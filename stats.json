@@ -1,0 +1,64 @@
+{
+  "assetsByChunkName": {
+    "path---my-second-post": [
+      "path---my-second-post-62611164d7d19be00a9f.js",
+      "path---my-second-post-62611164d7d19be00a9f.js.map"
+    ],
+    "component---src-pages-index-js": [
+      "component---src-pages-index-js-378b5cd6d70e8d0eb692.js",
+      "component---src-pages-index-js-378b5cd6d70e8d0eb692.js.map"
+    ],
+    "path---": [
+      "path----557518bd178906f8d58a.js",
+      "path----557518bd178906f8d58a.js.map"
+    ],
+    "path---profile": [
+      "path---profile-a0e39f21c11f6a62c5ab.js",
+      "path---profile-a0e39f21c11f6a62c5ab.js.map"
+    ],
+    "component---node-modules-gatsby-plugin-offline-app-shell-js": [
+      "component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js",
+      "component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js.map"
+    ],
+    "component---src-templates-blog-post-js": [
+      "component---src-templates-blog-post-js-3f1cdcf8d077db5fba6b.js",
+      "component---src-templates-blog-post-js-3f1cdcf8d077db5fba6b.js.map"
+    ],
+    "component---src-layouts-index-js": [
+      "component---src-layouts-index-js-f6cdfa3df9d137ce1d32.js",
+      "component---src-layouts-index-js-f6cdfa3df9d137ce1d32.js.map"
+    ],
+    "path---hi-folks": [
+      "path---hi-folks-fb8a9a0538f33ddbacd1.js",
+      "path---hi-folks-fb8a9a0538f33ddbacd1.js.map"
+    ],
+    "path---index": [
+      "path---index-b4370dcb0f13b5bf5856.js",
+      "path---index-b4370dcb0f13b5bf5856.js.map"
+    ],
+    "path---hello-world": [
+      "path---hello-world-399b384f92918a6ce430.js",
+      "path---hello-world-399b384f92918a6ce430.js.map"
+    ],
+    "commons": [
+      "commons-b4e979d6fcb38826292f.js",
+      "build-js-styles.css",
+      "commons-b4e979d6fcb38826292f.js.map",
+      "build-js-styles.css.map"
+    ],
+    "path---offline-plugin-app-shell-fallback": [
+      "path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js",
+      "path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js.map"
+    ],
+    "app": [
+      "app-a8b381282a450effb0b2.js",
+      "build-js-styles.css",
+      "app-a8b381282a450effb0b2.js.map",
+      "build-js-styles.css.map"
+    ],
+    "component---src-pages-profile-index-jsx": [
+      "component---src-pages-profile-index-jsx-db42792e767d4f97a3ec.js",
+      "component---src-pages-profile-index-jsx-db42792e767d4f97a3ec.js.map"
+    ]
+  }
+}
